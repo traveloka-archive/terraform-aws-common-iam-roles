@@ -16,7 +16,7 @@ Modules
 Authors
 -------
 
-- [Ronny Kaluge](https://github.com/ronny-kaluge)
+* [Ronny Kaluge](https://github.com/ronny-kaluge)
 
 License
 -------
