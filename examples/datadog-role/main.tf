@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 module "this" {
-  source = "../../modules/datadog-role" # In actual use case, you have to replace this line with: source = "github.com/traveloka/terraform-aws-common-iam-roles.git?ref=v0.1.0"
+  source = "../../modules/datadog-role" # In actual use case, you have to replace this line with: source = "github.com/traveloka/terraform-aws-common-iam-roles.git//modules/datadog-role?ref=v0.1.0"
 
   external_id = "2ce986a8821c412ebec3231d6564856c"
 }
