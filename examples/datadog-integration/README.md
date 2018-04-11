@@ -1,5 +1,5 @@
-Complete AWS Datadog Role Example
-====================================
+Datadog Integration Example
+===========================
 
 Configuration in this directory creates an AWS IAM role for AWS-Datadog integration.
 
