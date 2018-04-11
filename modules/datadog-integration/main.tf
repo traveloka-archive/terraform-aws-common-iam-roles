@@ -70,7 +70,7 @@ data "aws_iam_policy_document" "datadog_privilege_doc" {
       "support:*",
       "tag:getResources",
       "tag:getTagKeys",
-      "tag:getTagValues"
+      "tag:getTagValues",
     ]
 
     resources = [
@@ -83,7 +83,7 @@ data "aws_iam_policy_document" "datadog_privilege_doc" {
 module "datadog_role" {
   source = "github.com/traveloka/terraform-aws-iam-role.git//modules/external?ref=v0.2.0"
 
-  role_name                  = "DatadogRole"
+  role_name                  = "DatadogIntegration"
   role_description           = "Role for Datadog-AWS integration"
   role_force_detach_policies = true
   account_id                 = "${local.datadog_account_id}"
@@ -95,4 +95,3 @@ resource "aws_iam_role_policy" "this" {
   role   = "${module.datadog_role.role_name}"
   policy = "${data.aws_iam_policy_document.datadog_privilege_doc.json}"
 }
-
