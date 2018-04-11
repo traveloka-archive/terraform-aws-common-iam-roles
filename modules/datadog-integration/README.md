@@ -7,7 +7,7 @@ Usage
 -----
 
 You can open this example: 
-[Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/datadog-integraion)
+[Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/datadog-integration)
 
 Important Notes
 ---------------
