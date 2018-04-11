@@ -3,19 +3,17 @@ terraform-aws-common-iam-roles
 
 Terraform module which supports the creation of common IAM Roles. 
 
-Supported IAM Roles:
-1. Datadog Integration
+Supported IAM Roles
+-------------------
 
+* [Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/datadog-integration)
+* [RDS Enhanced Monitoring](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/rds-enhanced-monitoring)
 
 Usage
 -----
 
 * [Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/datadog-integration)
-
-Modules
--------
-
-* [Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/datadog-integration)
+* [RDS Enhanced Monitoring](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/rds-enhanced-monitoring)
 
 Authors
 -------
