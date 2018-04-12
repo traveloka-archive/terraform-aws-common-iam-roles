@@ -7,13 +7,19 @@ Supported IAM Roles
 -------------------
 
 * [Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/datadog-integration)
+* [Power User](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/power-user)
 * [RDS Enhanced Monitoring](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/rds-enhanced-monitoring)
+* [Read Only](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/read-only)
+* [Super Admin](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/super-admin)
 
 Usage
 -----
 
 * [Datadog Integration](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/datadog-integration)
+* [Power User](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/power-user)
 * [RDS Enhanced Monitoring](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/rds-enhanced-monitoring)
+* [Read Only](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/read-only)
+* [Super Admin](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/super-admin)
 
 Authors
 -------
