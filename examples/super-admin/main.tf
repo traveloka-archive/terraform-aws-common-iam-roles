@@ -3,8 +3,8 @@ provider "aws" {
   region  = "ap-southeast-1"
 }
 
-module "read_only_role" {
-  source = "../../modules/read-only"
+module "super_admin_role" {
+  source = "../../modules/super-admin"
 
   # List of trusted users
   trusted_users = [
