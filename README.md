@@ -11,6 +11,7 @@ Supported IAM Roles
 * [RDS Enhanced Monitoring](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/rds-enhanced-monitoring)
 * [Read Only](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/read-only)
 * [Super Admin](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/super-admin)
+* [Billing User](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/billing-user)
 
 Usage
 -----
@@ -20,12 +21,14 @@ Usage
 * [RDS Enhanced Monitoring](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/rds-enhanced-monitoring)
 * [Read Only](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/read-only)
 * [Super Admin](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/super-admin)
+* [Billing User](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/billing-user)
 
 Authors
 -------
 
 * [Ronny Kaluge](https://github.com/ronny-kaluge)
 * [Andy Saputra](https://github.com/andysaputra)
+* [S. Shvetsov](https://github.com/sshvetsov)
 
 License
 -------
