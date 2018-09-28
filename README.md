@@ -12,6 +12,7 @@ Supported IAM Roles
 * [Read Only](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/read-only)
 * [Super Admin](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/super-admin)
 * [Billing User](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/billing-user)
+* [Product Domain Build Manager](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/modules/product-domain-build-manager)
 
 Usage
 -----
@@ -22,6 +23,7 @@ Usage
 * [Read Only](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/read-only)
 * [Super Admin](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/super-admin)
 * [Billing User](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/billing-user)
+* [Product Domain Build Manager](https://github.com/traveloka/terraform-aws-common-iam-roles/tree/master/examples/product-domain-build-manager)
 
 Authors
 -------
@@ -29,6 +31,7 @@ Authors
 * [Ronny Kaluge](https://github.com/ronny-kaluge)
 * [Andy Saputra](https://github.com/andysaputra)
 * [S. Shvetsov](https://github.com/sshvetsov)
+* [Rafi Kurnia Putra](https://github.com/rafikurnia)
 
 License
 -------
