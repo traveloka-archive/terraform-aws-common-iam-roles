@@ -6,9 +6,10 @@ provider "aws" {
 module "pdbm_tsi" {
   source = "../../modules/product-domain-build-manager/"
 
-  product_domain = "tsi"
+  product_domain              = "tsi"
+  terraform_state_bucket_name = "terraform-state-management-dummy"
 
-  allowed_principals = [
+  trusted_users = [
     "arn:aws:iam::123456789012:user/rafi.putra",
   ]
 }

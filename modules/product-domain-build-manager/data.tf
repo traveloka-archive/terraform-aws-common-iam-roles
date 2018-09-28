@@ -2,34 +2,21 @@ data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
 
-data "aws_iam_policy_document" "assume_role" {
-  "statement" {
+data "aws_iam_policy_document" "codepipeline" {
+  statement {
+    sid = "AllowToPassRole"
+
     effect = "Allow"
 
     actions = [
-      "sts:AssumeRole",
+      "iam:PassRole",
     ]
 
-    principals {
-      type = "AWS"
-
-      identifiers = [
-        "${var.allowed_principals}",
-      ]
-    }
-
-    condition {
-      test     = "Bool"
-      variable = "aws:MultiFactorAuthPresent"
-
-      values = [
-        "true",
-      ]
-    }
+    resources = [
+      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/service-role/codepipeline.amazonaws.com/ServiceRoleForCodepipeline_${var.product_domain}*",
+    ]
   }
-}
 
-data "aws_iam_policy_document" "codepipeline" {
   statement {
     sid = "AllowToListCodepipelinePipelines"
 
@@ -110,50 +97,50 @@ data "aws_iam_policy_document" "codebuild" {
       "arn:aws:codebuild:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:project/${var.product_domain}*",
     ]
 
-    condition = {
-      test     = "StringLike"
-      variable = "aws:RequestTag/Name"
+    # condition = {
+    #   test     = "StringLike"
+    #   variable = "aws:RequestTag/Name"
 
-      values = [
-        "${var.product_domain}*",
-      ]
-    }
+    #   values = [
+    #     "${var.product_domain}*",
+    #   ]
+    # }
 
-    condition = {
-      test     = "StringEquals"
-      variable = "aws:RequestTag/ProductDomain"
+    # condition = {
+    #   test     = "StringEquals"
+    #   variable = "aws:RequestTag/ProductDomain"
 
-      values = [
-        "${var.product_domain}",
-      ]
-    }
+    #   values = [
+    #     "${var.product_domain}",
+    #   ]
+    # }
 
-    condition = {
-      test     = "StringLike"
-      variable = "aws:RequestTag/Service"
+    # condition = {
+    #   test     = "StringLike"
+    #   variable = "aws:RequestTag/Service"
 
-      values = [
-        "${var.product_domain}*",
-      ]
-    }
+    #   values = [
+    #     "${var.product_domain}*",
+    #   ]
+    # }
 
-    condition = {
-      test     = "StringEquals"
-      variable = "aws:RequestTag/Environment"
+    # condition = {
+    #   test     = "StringEquals"
+    #   variable = "aws:RequestTag/Environment"
 
-      values = [
-        "management",
-      ]
-    }
+    #   values = [
+    #     "management",
+    #   ]
+    # }
 
-    condition = {
-      test     = "StringEquals"
-      variable = "aws:RequestTag/ManagedBy"
+    # condition = {
+    #   test     = "StringEquals"
+    #   variable = "aws:RequestTag/ManagedBy"
 
-      values = [
-        "Terraform",
-      ]
-    }
+    #   values = [
+    #     "Terraform",
+    #   ]
+    # }
   }
 
   statement {
@@ -265,18 +252,93 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
   }
 }
 
-data "aws_iam_policy_document" "image" {
+data "aws_iam_policy_document" "s3" {
   statement {
-    sid = "AllowToManageImage"
+    sid = "AllowToListAllBuckets"
 
     effect = "Allow"
 
     actions = [
-      "ec2:DescribeImageAttribute",
-      "ec2:DescribeImages",
-      "ec2:DescribeTags",
-      "ec2:DeregisterImage",
-      "ec2:ModifyImageAttribute",
+      "s3:ListAllMyBuckets",
+    ]
+
+    resources = [
+      "arn:aws:s3:::*",
+    ]
+  }
+
+  statement {
+    sid = "AllowToListTFStateBucket"
+
+    effect = "Allow"
+
+    actions = [
+      "s3:ListBucket",
+      "s3:GetBucketLocation",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${var.terraform_state_bucket_name}",
+    ]
+  }
+
+  statement {
+    sid = "AllowToAccessTFState"
+
+    effect = "Allow"
+
+    actions = [
+      "s3:GetObject",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/general/vpc/*",
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking-shared-resources/beisami/*",
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking-shared-resources/pd/${var.product_domain}/*",
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking/${var.product_domain}/*",
+    ]
+  }
+
+  statement {
+    sid = "AllowToWriteTFState"
+
+    effect = "Allow"
+
+    actions = [
+      "s3:PutObject",
+    ]
+
+    resources = [
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking/${var.product_domain}/*",
+    ]
+  }
+}
+
+data "aws_iam_policy_document" "dynamodb" {
+  statement {
+    sid = "AllowToAccessDynamoDB"
+
+    effect = "Allow"
+
+    actions = [
+      "dynamodb:DeleteItem",
+      "dynamodb:GetItem",
+      "dynamodb:PutItem",
+      "dynamodb:UpdateItem",
+    ]
+
+    resources = [
+      "arn:aws:dynamodb:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:table/${var.terraform_state_bucket_name}",
+    ]
+  }
+
+  statement {
+    sid = "AllowToListTables"
+
+    effect = "Allow"
+
+    actions = [
+      "dynamodb:ListTables",
     ]
 
     resources = [

@@ -13,11 +13,6 @@ output "aws_caller_user_id" {
   value       = "${module.pdbm_tsi.aws_caller_user_id}"
 }
 
-output "region_name" {
-  description = "The name of the selected region."
-  value       = "${module.pdbm_tsi.region_name}"
-}
-
 output "role_name" {
   description = "The name of the role."
   value       = "${module.pdbm_tsi.role_name}"
