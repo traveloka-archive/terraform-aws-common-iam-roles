@@ -301,3 +301,21 @@ data "aws_iam_policy_document" "dynamodb" {
     ]
   }
 }
+
+data "aws_iam_policy_document" "ami" {
+  statement {
+    sid    = "AllowToDeregisterAMI"
+    effect = "Allow"
+
+    actions = [
+      "ec2:DescribeImageAttribute",
+      "ec2:DescribeImages",
+      "ec2:DescribeTags",
+      "ec2:DeregisterImage",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+}

@@ -39,3 +39,9 @@ resource "aws_iam_role_policy" "pdbm_dynamodb" {
   role   = "${module.this.role_name}"
   policy = "${data.aws_iam_policy_document.dynamodb.json}"
 }
+
+resource "aws_iam_role_policy" "pdbm_ami" {
+  name   = "AllowToDeregisterAMI"
+  role   = "${module.this.role_name}"
+  policy = "${data.aws_iam_policy_document.ami.json}"
+}
