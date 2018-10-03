@@ -192,16 +192,21 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
   }
 
   statement {
-    sid = "AllowToCreateLogGroupForCodeBuild"
+    sid = "AllowToManageLogGroupForCodeBuild"
 
     effect = "Allow"
 
     actions = [
       "logs:CreateLogGroup",
+      "logs:PutRetentionPolicy",
+      "logs:ListTagsLogGroup",
+      "logs:TagLogGroup",
+      "logs:DeleteLogGroup",
     ]
 
     resources = [
       "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${var.product_domain}*",
+      "arn:aws:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:log-group:/aws/codebuild/${var.product_domain}*:*",
     ]
   }
 
