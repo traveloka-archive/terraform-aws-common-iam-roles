@@ -198,6 +198,7 @@ data "aws_iam_policy_document" "cloudwatch_logs" {
 
     actions = [
       "logs:CreateLogGroup",
+      "logs:PutRetentionPolicy",
     ]
 
     resources = [
