@@ -91,6 +91,7 @@ data "aws_iam_policy_document" "codebuild" {
 
     actions = [
       "codebuild:CreateProject",
+      "codebuild:CreateWebhook",
     ]
 
     resources = [
