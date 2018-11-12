@@ -106,7 +106,9 @@ data "aws_iam_policy_document" "codebuild" {
 
     actions = [
       "codebuild:DeleteProject",
+      "codebuild:DeleteWebhook",
       "codebuild:UpdateProject",
+      "codebuild:UpdateWebhook",
     ]
 
     resources = [
