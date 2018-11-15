@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "pdbm_s3" {
 }
 
 resource "aws_iam_role_policy" "pdbm_ssm" {
-  name   = "AllowToAccessS3"
+  name   = "AllowToAccessSSM"
   role   = "${module.this.role_name}"
   policy = "${data.aws_iam_policy_document.ssm.json}"
 }
