@@ -195,6 +195,20 @@ data "aws_iam_policy_document" "ssm" {
   }
 
   statement {
+    sid = "AllowToGetParameter"
+
+    effect = "Allow"
+
+    actions = [
+      "ssm:GetParameter",
+    ]
+
+    resources = [
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*",
+    ]
+  }
+
+  statement {
     sid = "AllowToDeleteParameter"
 
     effect = "Allow"
@@ -205,6 +219,20 @@ data "aws_iam_policy_document" "ssm" {
 
     resources = [
       "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*",
+    ]
+  }
+
+  statement {
+    sid = "AllowToDescribeParameters"
+
+    effect = "Allow"
+
+    actions = [
+      "ssm:DescribeParameters",
+    ]
+
+    resources = [
+      "*",
     ]
   }
 }
