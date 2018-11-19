@@ -179,6 +179,92 @@ data "aws_iam_policy_document" "codebuild" {
   }
 }
 
+data "aws_iam_policy_document" "ssm" {
+  statement {
+    sid = "AllowToPutParameter"
+
+    effect = "Allow"
+
+    actions = [
+      "ssm:PutParameter",
+    ]
+
+    resources = [
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*",
+    ]
+  }
+
+  statement {
+    sid = "AllowToGetParameter"
+
+    effect = "Allow"
+
+    actions = [
+      "ssm:GetParameter",
+    ]
+
+    resources = [
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*",
+    ]
+  }
+
+  statement {
+    sid = "AllowToListKMSKeys"
+
+    effect = "Allow"
+
+    actions = [
+      "kms:ListResourceTags",
+      "kms:ListKeys",
+      "kms:ListAliases",
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
+    sid = "AllowToEncryptParameter"
+
+    effect = "Allow"
+
+    actions = [
+      "kms:Encrypt",
+    ]
+
+    resources = [
+      "${var.parameter_kms_key_arn}",
+    ]
+  }
+
+  statement {
+    sid = "AllowToDeleteParameter"
+
+    effect = "Allow"
+
+    actions = [
+      "ssm:DeleteParameter",
+    ]
+
+    resources = [
+      "arn:aws:ssm:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:parameter/tvlk-secret/codebuild/${var.product_domain}/*",
+    ]
+  }
+
+  statement {
+    sid = "AllowToDescribeParameters"
+
+    effect = "Allow"
+
+    actions = [
+      "ssm:DescribeParameters",
+    ]
+
+    resources = [
+      "*",
+    ]
+  }
+}
+
 data "aws_iam_policy_document" "cloudwatch_logs" {
   statement {
     sid = "AllowToDescribeLogGroups"

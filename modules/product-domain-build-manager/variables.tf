@@ -9,6 +9,11 @@ variable "mfa_required" {
   default     = "true"
 }
 
+variable "parameter_kms_key_arn" {
+  description = "The ARN of the KMS key that the PDBM can use to encrypt parameters"
+  type        = "string"
+}
+
 variable "trusted_users" {
   description = "List of ARNs of users that are granted to assume the role"
   type        = "list"
