@@ -209,6 +209,20 @@ data "aws_iam_policy_document" "ssm" {
   }
 
   statement {
+    sid = "AllowToListKMSKeys"
+
+    effect = "Allow"
+
+    actions = [
+      "kms:ListResourceTags",
+      "kms:ListKeys",
+      "kms:ListAliases",
+    ]
+
+    resources = ["*"]
+  }
+
+  statement {
     sid = "AllowToEncryptParameter"
 
     effect = "Allow"
