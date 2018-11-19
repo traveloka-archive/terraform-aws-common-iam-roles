@@ -209,6 +209,20 @@ data "aws_iam_policy_document" "ssm" {
   }
 
   statement {
+    sid = "AllowToEncryptParameter"
+
+    effect = "Allow"
+
+    actions = [
+      "kms:Encrypt",
+    ]
+
+    resources = [
+      "${var.parameter_kms_key_arn}",
+    ]
+  }
+
+  statement {
     sid = "AllowToDeleteParameter"
 
     effect = "Allow"
