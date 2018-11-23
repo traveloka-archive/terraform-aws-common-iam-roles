@@ -359,6 +359,8 @@ data "aws_iam_policy_document" "s3" {
       "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking-shared-resources/beisami/*",
       "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking-shared-resources/pd/${var.product_domain}/*",
       "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking/${var.product_domain}/*",
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/java-build-shared-resources/pd/${var.product_domain}/*",
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/java-build/${var.product_domain}/*",
     ]
   }
 
@@ -373,6 +375,7 @@ data "aws_iam_policy_document" "s3" {
 
     resources = [
       "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/ami-baking/${var.product_domain}/*",
+      "arn:aws:s3:::${var.terraform_state_bucket_name}/${data.aws_region.current.name}/java-build/${var.product_domain}/*",
     ]
   }
 }
