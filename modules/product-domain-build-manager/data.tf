@@ -246,7 +246,7 @@ data "aws_iam_policy_document" "ssm" {
 
     actions = [
       "ssm:DeleteParameter",
-      "ssm:DeleteParameter",
+      "ssm:DeleteParameters",
       "ssm:RemoveTagsFromResource",
     ]
 
