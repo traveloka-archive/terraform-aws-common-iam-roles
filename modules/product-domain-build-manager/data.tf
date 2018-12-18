@@ -187,6 +187,7 @@ data "aws_iam_policy_document" "ssm" {
 
     actions = [
       "ssm:PutParameter",
+      "ssm:AddTagsToResource",
     ]
 
     resources = [
@@ -201,6 +202,8 @@ data "aws_iam_policy_document" "ssm" {
 
     actions = [
       "ssm:GetParameter",
+      "ssm:GetParameters",
+      "ssm:ListTagsForResource",
     ]
 
     resources = [
@@ -243,6 +246,7 @@ data "aws_iam_policy_document" "ssm" {
 
     actions = [
       "ssm:DeleteParameter",
+      "ssm:DeleteParameters",
     ]
 
     resources = [
