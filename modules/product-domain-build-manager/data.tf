@@ -150,6 +150,22 @@ data "aws_iam_policy_document" "codebuild" {
   }
 
   statement {
+    sid = "AllowToManageEventRule"
+
+    effect = "Allow"
+
+    actions = [
+      "events:DescribeRule",
+      "events:DeleteRule",
+      "events:PutRule",
+    ]
+
+    resources = [
+      "arn:aws:events:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:rule/${var.product_domain}*",
+    ]
+  }
+
+  statement {
     sid = "AllowToGetEventRule"
 
     effect = "Allow"
