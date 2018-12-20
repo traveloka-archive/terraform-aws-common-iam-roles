@@ -163,25 +163,39 @@ data "aws_iam_policy_document" "codebuild" {
       "events:PutRule",
       "events:PutTargets",
       "events:RemoveTargets",
+      "events:ListRuleNamesByTarget",
     ]
 
     resources = [
       "arn:aws:events:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:rule/${var.product_domain}*",
     ]
-  }
 
-  statement {
-    sid = "AllowToGetEventRule"
+    condition = {
+      test     = "StringLikeIfExists"
+      variable = "events:TargetArn"
 
-    effect = "Allow"
+      values = [
+        "arn:aws:codepipeline:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${var.product_domain}*",
+      ]
+    }
 
-    actions = [
-      "events:ListRuleNamesByTarget",
-    ]
+    condition = {
+      test     = "StringEqualsIfExists"
+      variable = "events:source"
 
-    resources = [
-      "arn:aws:events:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:*",
-    ]
+      values = [
+        "aws.s3",
+      ]
+    }
+
+    condition = {
+      test     = "StringEqualsIfExists"
+      variable = "events:detail-type"
+
+      values = [
+        "AWS API Call via CloudTrail",
+      ]
+    }
   }
 
   statement {
