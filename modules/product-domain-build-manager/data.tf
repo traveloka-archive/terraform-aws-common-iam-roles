@@ -159,6 +159,7 @@ data "aws_iam_policy_document" "codebuild" {
       "events:DeleteRule",
       "events:PutRule",
       "events:ListTargetsByRule",
+      "events:RemoveTargets",
     ]
 
     resources = [
