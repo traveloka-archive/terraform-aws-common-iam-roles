@@ -14,6 +14,7 @@ data "aws_iam_policy_document" "codepipeline" {
 
     resources = [
       "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/service-role/codepipeline.amazonaws.com/ServiceRoleForCodepipeline_${var.product_domain}*",
+      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/service-role/codepipeline.amazonaws.com/ServiceRoleForEvents_${var.product_domain}*",
     ]
   }
 
