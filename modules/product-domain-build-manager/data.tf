@@ -157,8 +157,9 @@ data "aws_iam_policy_document" "codebuild" {
     actions = [
       "events:DescribeRule",
       "events:DeleteRule",
-      "events:PutRule",
+      "events:EnableRule",
       "events:ListTargetsByRule",
+      "events:PutRule",
       "events:RemoveTargets",
     ]
 
