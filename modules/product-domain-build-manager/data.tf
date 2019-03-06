@@ -109,6 +109,7 @@ data "aws_iam_policy_document" "codebuild" {
       "codebuild:DeleteWebhook",
       "codebuild:UpdateProject",
       "codebuild:UpdateWebhook",
+      "codebuild:InvalidateProjectCache",
     ]
 
     resources = [
