@@ -19,7 +19,7 @@ You need to:
 3. use your AWS Account ID and the generated AWS Role name to add an account at https://app.datadoghq.com/account/settings#integrations/amazon_web_services (at the same tab that give you the exernal ID)
 4. fill the *"Per namespace"* section by clicking button *"Add an account specific namespace rule"* and choose which *"Service"* you **really need** to collect
 
-  because we will update the *"Preferences for all accounts"* section **by 1 August 2019** to **not collect any AWS metrics**
+Step (4) is very important, because we will update the *"Preferences for all accounts"* section **by 1 August 2019** to **not collect any AWS metrics**
 
 Also important:
 * fill the *"Optionally limit metrics collection"* section if not all instances in your AWS account need to get the metrics and EC2 tags streamed *from AWS*
