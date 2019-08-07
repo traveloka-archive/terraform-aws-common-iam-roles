@@ -37,4 +37,3 @@ output "role_unique_id" {
   description = "The stable and unique string identifying the role."
   value       = "${module.datadog_role.role_unique_id}"
 }
-
