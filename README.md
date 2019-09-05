@@ -1,5 +1,5 @@
-terraform-aws-common-iam-roles
-==============================
+# [DEPRECATED]
+# Please use [terraform-aws-common-iam-policies](https://registry.terraform.io/modules/traveloka/common-iam-policies/aws/) instead
 
 Terraform module which supports the creation of common IAM Roles. 
 
